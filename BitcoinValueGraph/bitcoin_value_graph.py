@@ -17,8 +17,6 @@ bitcoin_dict = json.loads(bitcoin_data_in_bytes)
 
 bitcoin_dict_cleaned = bitcoin_dict["bpi"]
 
-print(bitcoin_dict_cleaned)
-
 # url with current exchange values in JSON format
 url_2 = "https://api.fixer.io/latest"
 
@@ -30,11 +28,7 @@ exchange_rates_dict = json.loads(exchange_rates_data_in_bytes)
 
 exchange_rates_dict_cleaned = exchange_rates_dict["rates"]
 
-print(exchange_rates_dict_cleaned)
-
 exchange_rates_USD_to_EUR_ratio = exchange_rates_dict_cleaned["USD"]
-
-print(exchange_rates_USD_to_EUR_ratio)
 
 dates = []
 closing_prices_in_usd = []

@@ -33,7 +33,7 @@ setup(name="BitcoinValueGraph",
       packages=["BitcoinValueGraph"],
       install_requires=["pygal"],
       entry_points={
-          "console_scripts": ["bitcoin=BitcoinValueGraph.bitcoin_value_graph:main"],
+          "console_scripts": ["bitcoin=BitcoinValueGraph.bitcoin_value_graph"],
       },
       )
 
