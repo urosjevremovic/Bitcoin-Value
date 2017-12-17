@@ -4,6 +4,7 @@ from pygal.style import DarkGreenBlueStyle
 import json
 import platform
 import getpass
+import webbrowser
 
 # url with Bitcoin USD value in JSON format
 url = "https://api.coindesk.com/v1/bpi/historical/close.json"
@@ -54,13 +55,15 @@ line_chart.add("Value in USD", closing_prices_in_usd)
 line_chart.add("Value in EUR", closing_prices_in_eur)
 
 if platform.system() == "Linux":
-    user = getpass.getuser()
-    line_chart.render_to_file(f"/home/{user}/bitcoin-value-graph")
+    line_chart.render_to_file("/var/tmp/bitcoin-value-graph")
+    webbrowser.open("/var/tmp/bitcoin-value-graph")
 
 if platform.system() == "Darwin":
-    user = getpass.getuser()
-    line_chart.render_to_file(f"/Users/{user}/bitcoin-value-graph")
+    line_chart.render_to_file("/var/tmp/bitcoin-value-graph")
+    webbrowser.open("/var/tmp/bitcoin-value-graph")
+
 
 if platform.system() == "Windows":
     user = getpass.getuser()
-    line_chart.render_to_file(r"C:\Users\Public\Desktop\bitcoin-value-graph")
+    line_chart.render_to_file(fr"C\Users\{user}\AppData\Local\Temp\bitcoin-value-graph")
+    webbrowser.open(fr"C\Users\{user}\AppData\Local\Temp\bitcoin-value-graph")
