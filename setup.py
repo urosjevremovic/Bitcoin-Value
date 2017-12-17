@@ -24,7 +24,7 @@ from setuptools import setup
 
 
 setup(name="BitcoinValueGraph",
-      version="0.2",
+      version="0.4",
       description="Bitcoin value",
       long_description=__doc__,
       url="https://github.com/Urosh91/Bitcoin-Value",
@@ -33,7 +33,7 @@ setup(name="BitcoinValueGraph",
       packages=["BitcoinValueGraph"],
       install_requires=["pygal"],
       entry_points={
-          "console_scripts": ["bitcoin=BitcoinValueGraph.bitcoin_value_graph"],
+          "console_scripts": ["bitcoin=BitcoinValueGraph.bitcoin_value_graph:main"],
       },
       )
 
