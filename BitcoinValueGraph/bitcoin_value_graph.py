@@ -1,9 +1,8 @@
-from urllib.request import urlopen
+import urllib.request
 import pygal
 from pygal.style import DarkGreenBlueStyle
 import json
-import platform
-import getpass
+import os
 import webbrowser
 
 
@@ -11,7 +10,9 @@ def main():
     # url with Bitcoin USD value in JSON format
     url = "https://api.coindesk.com/v1/bpi/historical/close.json"
 
-    bitcoin_data = urlopen(url)
+    bitcoin_data_request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+
+    bitcoin_data = urllib.request.urlopen(bitcoin_data_request)
 
     bitcoin_data_in_bytes = bitcoin_data.read()
 
@@ -22,7 +23,9 @@ def main():
     # url with current exchange values in JSON format
     url_2 = "https://api.fixer.io/latest"
 
-    exchange_rates_data = urlopen(url_2)
+    exchange_rates_data_request = urllib.request.Request(url_2, headers={'User-Agent': 'Mozilla/5.0'})
+
+    exchange_rates_data = urllib.request.urlopen(exchange_rates_data_request)
 
     exchange_rates_data_in_bytes = exchange_rates_data.read()
 
@@ -50,18 +53,9 @@ def main():
     line_chart.add("Value in USD", closing_prices_in_usd)
     line_chart.add("Value in EUR", closing_prices_in_eur)
 
-    if platform.system() == "Linux":
-        line_chart.render_to_file("/var/tmp/bitcoin-value-graph")
-        webbrowser.open("/var/tmp/bitcoin-value-graph")
-
-    if platform.system() == "Darwin":
-        line_chart.render_to_file("/var/tmp/bitcoin-value-graph")
-        webbrowser.open("/var/tmp/bitcoin-value-graph")
-
-    if platform.system() == "Windows":
-        user = getpass.getuser()
-        line_chart.render_to_file(fr"C\Users\{user}\AppData\Local\Temp\bitcoin-value-graph")
-        webbrowser.open(fr"C\Users\{user}\AppData\Local\Temp\bitcoin-value-graph")
+    cwd = os.getcwd()
+    line_chart.render_to_file(f"{cwd}/bitcoin-value-graph")
+    webbrowser.open(f"{cwd}/bitcoin-value-graph")
 
 
 if __name__ == '__main__':
