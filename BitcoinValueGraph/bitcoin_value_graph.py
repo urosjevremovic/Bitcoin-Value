@@ -54,8 +54,8 @@ def main():
     line_chart.add("Value in EUR", closing_prices_in_eur)
 
     cwd = os.getcwd()
-    line_chart.render_to_file(f"{cwd}/bitcoin-value-graph")
-    webbrowser.open(f"{cwd}/bitcoin-value-graph")
+    line_chart.render_to_file(f"{cwd}/bitcoin-value-graph.svg")
+    webbrowser.open(f"{cwd}/bitcoin-value-graph.svg")
 
 
 if __name__ == '__main__':
