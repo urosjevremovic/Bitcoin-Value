@@ -5,6 +5,8 @@ import json
 import os
 import webbrowser
 
+API_KEY = '0ccea2063d54ff0b3f381c4b7d271d54'
+
 
 def main():
     # url with Bitcoin USD value in JSON format
@@ -21,7 +23,7 @@ def main():
     bitcoin_dict_cleaned = bitcoin_dict["bpi"]
 
     # url with current exchange values in JSON format
-    url_2 = "https://api.fixer.io/latest"
+    url_2 = "http://data.fixer.io/api/latest?access_key=0ccea2063d54ff0b3f381c4b7d271d54"
 
     exchange_rates_data_request = urllib.request.Request(url_2, headers={'User-Agent': 'Mozilla/5.0'})
 

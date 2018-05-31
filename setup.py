@@ -20,7 +20,7 @@ from setuptools import setup
 
 
 setup(name="BitcoinValueGraph",
-      version="0.6",
+      version="0.7",
       description="Bitcoin value",
       long_description=__doc__,
       url="https://github.com/Urosh91/Bitcoin-Value",
